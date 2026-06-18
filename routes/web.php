@@ -15,10 +15,14 @@ Route::get('/curso/{nome}', function ($nome) {
 })->name('curso.view');
 
 
+//users
+Route::get('/add-user', function () {
+    return view('users.addUser');
+})->name('users.add');
 
 
 //rota de tratamento de erros, caso entre numa rota não existente
 Route::fallback(function(){
-    return '<p>Está perdido? Não se preocupe que estamos aqui!</p>';
+    return view('fallback');
 });
 
