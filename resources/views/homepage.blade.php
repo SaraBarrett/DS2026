@@ -1,12 +1,6 @@
 @extends('layouts.fo')
 @section('content')
-    @php
-        //aqui podemos declarar código php (código de servidor)
-        //no futuro, o código do nome é carregado de um select à nossa base de users
-        $myName = 'Sara';
-        $alunos = ['Daniel', 'Sofia', 'Raquel', 'Filipe', 'Francisco', 'Guilherme'];
-
-    @endphp
+    
 
 
     <img src="{{ asset('images/cultural.jpg') }}">
