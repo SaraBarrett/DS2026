@@ -14,6 +14,8 @@ Route::get('/curso/{nome}',[UtilController::class, 'cursos'])->name('curso.view'
 //users
 Route::get('/add-user',[UserController::class, 'addUser'] )->name('users.add');
 
+Route::get('/users',[UserController::class, 'allUsers'] )->name('users.all');
+
 
 //rota de tratamento de erros, caso entre numa rota não existente
 Route::fallback([UtilController::class, 'fallback']);

@@ -13,8 +13,13 @@ class UtilController extends Controller
     $myName = 'Sara';
     $alunos = ['Daniel', 'Sofia', 'Raquel', 'Filipe', 'Francisco', 'Guilherme'];
 
+    $istec_info = [
+        'name'=> 'Istec',
+        'address'=>'Rua do Istec',
+        'email' => 'istec@gmail.com'
+    ];
 
-    return view('homepage', compact('myName', 'alunos'));
+    return view('homepage', compact('myName', 'alunos', 'istec_info'));
 }
 
 public function hello () {
