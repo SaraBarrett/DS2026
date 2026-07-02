@@ -8,6 +8,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">User</th>
+                <th>acções</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,9 @@
                     <td>{{ $task->name }}</td>
                     <td>{{ $task->description }}</td>
                     <td>{{ $task->username }}</td>
+                    <td><a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Delete</a>
+                    </td>
                 </tr>
             @endforeach
 
