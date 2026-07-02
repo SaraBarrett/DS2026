@@ -35,9 +35,11 @@ protected function getContacts(){
 
 protected function getUsersFromDb(){
     $usersFromDb = DB::table('users')
-    ->where('email', 'sara@gmail.com')
+    //->where('email', 'sara@gmail.com')
     ->select('name', 'id', 'nif', 'address', 'email')
     ->get();
+
+   // dd($usersFromDb);
 
     return $usersFromDb;
 

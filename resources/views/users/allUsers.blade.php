@@ -16,6 +16,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Morada</th>
                 <th scope="col">Nif</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->address}}</td>
                     <td>{{$user->nif}}</td>
+                    <td><a href="" class="btn btn-info">Ver</a></td>
                 </tr>
             @endforeach
 
