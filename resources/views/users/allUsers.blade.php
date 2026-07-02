@@ -22,12 +22,14 @@
         <tbody>
             @foreach ($usersFromDb as $user)
                 <tr>
-                    <th scope="row">{{$user->id}}</th>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->address}}</td>
-                    <td>{{$user->nif}}</td>
-                    <td><a href="" class="btn btn-info">Ver</a></td>
+                    <th scope="row">{{ $user->id }}</th>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->address }}</td>
+                    <td>{{ $user->nif }}</td>
+                    <td><a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger">Delete</a>
+                    </td>
                 </tr>
             @endforeach
 

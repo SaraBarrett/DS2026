@@ -17,6 +17,13 @@ Route::get('/add-user',[UserController::class, 'addUser'] )->name('users.add');
 
 Route::get('/users',[UserController::class, 'allUsers'] )->name('users.all');
 
+//abrir a ficha do user
+Route::get('/show-user/{id}',[UserController::class, 'showUser'])->name('users.show');
+
+
+//rota de apagar
+Route::get('/delete-user/{id}',[UserController::class, 'deleteUser'])->name('users.delete');
+
 
 //tasks
 Route::get('/tasks',[TaskController::class, 'allTasks'] )->name('tasks.all');

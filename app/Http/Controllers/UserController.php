@@ -44,4 +44,27 @@ protected function getUsersFromDb(){
     return $usersFromDb;
 
 }
+
+    public function showUser($id){
+
+    //ir à base de dados carregar toda a linha do user onde estou a clicar
+        $user = db::table('users')
+        ->where('id', $id)
+        ->first();
+
+
+        return view('users.show', compact('user'));
+    }
+
+    public function deleteUser($id){
+        DB::table('tasks')
+        ->where('user_id', $id)
+        ->delete();
+
+        db::table('users')
+        ->where('id', $id)
+        ->delete();
+
+        return back();
+    }
 }
