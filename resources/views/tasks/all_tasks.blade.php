@@ -1,5 +1,10 @@
 @extends('layouts.fo')
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success">{{ session('message') }}
+        </div>
+    @endif
+
     <h4>Aqui vamos carregar as tarefas da BD</h4>
     <table class="table">
         <thead>

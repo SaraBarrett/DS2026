@@ -6,7 +6,7 @@
             <h1>Adicionar Task</h1>
         </div>
 
-        <form method="POST" action="">
+        <form method="POST" action="{{ route('tasks.store') }}">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nome</label>
@@ -28,11 +28,11 @@
                 <label for="user_id" class="form-label">User</label>
                 <select required name="user_id" class="form-control">
                     <option value="">Selecione um user</option>
-                    {{-- @foreach ($users as $user)
-                        <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}">
                             {{ $user->name }}
                         </option>
-                    @endforeach --}}
+                    @endforeach
                 </select>
             </div>
             @error('user_id')

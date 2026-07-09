@@ -41,11 +41,11 @@ Route::get('/show-task/{id}',[TaskController::class, 'showTask'])->name('tasks.s
 //rota de apagar
 Route::get('/delete-task/{id}',[TaskController::class, 'deleteTask'])->name('tasks.delete');
 
-//users
+
 Route::get('/add-task',[TaskController::class, 'addTask'] )->name('tasks.add');
 
 
-
+Route::post('/store-task',[TaskController::class, 'storeTask'] )->name('tasks.store');
 
 
 //rota de tratamento de erros, caso entre numa rota não existente
