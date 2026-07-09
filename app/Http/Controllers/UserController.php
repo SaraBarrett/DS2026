@@ -72,7 +72,7 @@ protected function getUsersFromDb(){
 
 }
 
-    public function showUser($id){
+public function showUser($id){
 
     //ir à base de dados carregar toda a linha do user onde estou a clicar
         $user = db::table('users')
@@ -93,5 +93,20 @@ protected function getUsersFromDb(){
         ->delete();
 
         return back();
+    }
+
+    public function updateUser(Request $request){
+          $request->validate([
+            'name' => 'required|max:50|string'
+        ]);
+        db::table('users')
+        ->where('id', $request->id)
+        ->update([
+            'name' => $request->name,
+            'nif' => $request->nif,
+            'address' => $request->address
+        ]);
+        return redirect()->route('users.all')->with('message', 'User actualizado com sucesso!');
+
     }
 }

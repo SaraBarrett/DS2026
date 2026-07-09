@@ -28,6 +28,8 @@ Route::post('/store-user', [UserController::class, 'storeUser'])->name('users.st
 Route::get('/delete-user/{id}',[UserController::class, 'deleteUser'])->name('users.delete');
 
 
+Route::put('/update-user', [UserController::class, 'updateUser'])->name('users.update');
+
 //tasks
 Route::get('/tasks',[TaskController::class, 'allTasks'] )->name('tasks.all');
 
@@ -38,6 +40,13 @@ Route::get('/show-task/{id}',[TaskController::class, 'showTask'])->name('tasks.s
 
 //rota de apagar
 Route::get('/delete-task/{id}',[TaskController::class, 'deleteTask'])->name('tasks.delete');
+
+//users
+Route::get('/add-task',[TaskController::class, 'addTask'] )->name('tasks.add');
+
+
+
+
 
 //rota de tratamento de erros, caso entre numa rota não existente
 Route::fallback([UtilController::class, 'fallback']);

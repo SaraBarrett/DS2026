@@ -38,4 +38,11 @@ class TaskController extends Controller
 
         return back();
     }
+
+    public function addTask(){
+
+        $users = db::table('users')->get();
+        
+        return view('tasks.create');
+    }
 }
