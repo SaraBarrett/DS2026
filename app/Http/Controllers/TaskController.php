@@ -19,6 +19,8 @@ class TaskController extends Controller
 
     public function showTask($id){
 
+    $users = db::table('users')->get();
+
     //ir à base de dados carregar toda a linha do user onde estou a clicar
         $task = db::table('tasks')
        ->join('users', 'tasks.user_id', 'users.id')
@@ -27,7 +29,7 @@ class TaskController extends Controller
         ->first();
 
 
-        return view('tasks.show', compact('task'));
+        return view('tasks.show', compact('task', 'users'));
     }
 
     public function deleteTask($id){
@@ -62,5 +64,26 @@ class TaskController extends Controller
         ]);
 
         return redirect()->route('tasks.all')->with('message', 'Tarefa adicionado com sucesso!');
+    }
+
+    public function updateTask(Request $request){
+
+        $request->validate([
+        'name' => 'required',
+        'user_id' =>'required'
+        ]);
+
+        DB::table('tasks')->where('id', $request->id)
+        ->update([
+            'name' =>$request->name,
+            'description' =>$request->description,
+            'user_id' =>$request->user_id,
+            'status' =>$request->status,
+            'due_at' =>$request->due_at,
+
+        ]);
+
+        return redirect()->route('tasks.all')->with('message', 'task adicionada com sucesso!');
+
     }
 }

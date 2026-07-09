@@ -12,7 +12,13 @@
         </div>
     @endif
 
-    
+    <form action="" method="get">
+        <input type="text" name="search">
+        <button type="submit" class="btn btn-info">Procurar</button>
+
+    </form>
+
+
     <h5>Users vindos da base de dados</h5>
     <table class="table">
         <thead>

@@ -46,7 +46,7 @@ Route::get('/add-task',[TaskController::class, 'addTask'] )->name('tasks.add');
 
 
 Route::post('/store-task',[TaskController::class, 'storeTask'] )->name('tasks.store');
-
+Route::put('/update-task', [TaskController::class, 'updateTask'])->name('tasks.update');
 
 //rota de tratamento de erros, caso entre numa rota não existente
 Route::fallback([UtilController::class, 'fallback']);

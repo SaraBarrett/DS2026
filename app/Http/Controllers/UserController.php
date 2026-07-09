@@ -18,7 +18,9 @@ class UserController extends Controller
 public function allUsers(){
     $users = $this->getContacts();
 
-    $usersFromDb = $this->getUsersFromDb();
+    $search = request()->query('search')?request()->query('search'):null;
+
+    $usersFromDb = $this->getUsersFromDb($search);
 
 
     return view('users.allUsers',compact('users', 'usersFromDb'));
@@ -60,10 +62,16 @@ protected function getContacts(){
     return  $contacts;
 }
 
-protected function getUsersFromDb(){
-    $usersFromDb = DB::table('users')
-    //->where('email', 'sara@gmail.com')
-    ->select('name', 'id', 'nif', 'address', 'email')
+protected function getUsersFromDb($search){
+    $usersFromDb = DB::table('users');
+
+        if($search){
+            $usersFromDb=
+            $usersFromDb->where('name', 'LIKE', "%{$search}%")
+            ->orwhere('email', 'LIKE', "%{$search}%");
+        }
+
+      $usersFromDb= $usersFromDb->select('name', 'id', 'nif', 'address', 'email')
     ->get();
 
    // dd($usersFromDb);
