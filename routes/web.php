@@ -5,6 +5,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/welcome', function(){
+    return view('welcome');
+});
+
 Route::get('/', [UtilController::class, 'home'])->name('homepage');
 
 Route::get('/hello', [UtilController::class, 'hello'])->name('hello');
