@@ -20,6 +20,9 @@ Route::get('/users',[UserController::class, 'allUsers'] )->name('users.all');
 //abrir a ficha do user
 Route::get('/show-user/{id}',[UserController::class, 'showUser'])->name('users.show');
 
+//rota de armazenar user
+Route::post('/store-user', [UserController::class, 'storeUser'])->name('users.store');
+
 
 //rota de apagar
 Route::get('/delete-user/{id}',[UserController::class, 'deleteUser'])->name('users.delete');
@@ -35,7 +38,6 @@ Route::get('/show-task/{id}',[TaskController::class, 'showTask'])->name('tasks.s
 
 //rota de apagar
 Route::get('/delete-task/{id}',[TaskController::class, 'deleteTask'])->name('tasks.delete');
-
 
 //rota de tratamento de erros, caso entre numa rota não existente
 Route::fallback([UtilController::class, 'fallback']);

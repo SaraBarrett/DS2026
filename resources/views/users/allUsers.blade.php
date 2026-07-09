@@ -7,6 +7,12 @@
         @endforeach
     </ul>
 
+    @if (session('message'))
+        <div class="alert alert-success">{{ session('message') }}
+        </div>
+    @endif
+
+    
     <h5>Users vindos da base de dados</h5>
     <table class="table">
         <thead>
