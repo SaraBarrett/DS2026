@@ -78,7 +78,7 @@ class TaskController extends Controller
             'name' =>$request->name,
             'description' =>$request->description,
             'user_id' =>$request->user_id,
-            'status' =>$request->status,
+            'status' =>$request->status == 'on' ?1: 0 ,
             'due_at' =>$request->due_at,
 
         ]);
