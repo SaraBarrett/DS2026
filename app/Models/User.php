@@ -17,6 +17,10 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    CONST USER_ADMIN =1;
+    CONST USER_TEACHER =2;
+    CONST USER_STUDENT =3;
+
     /**
      * Get the attributes that should be cast.
      *

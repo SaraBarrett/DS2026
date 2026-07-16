@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilController;
@@ -52,6 +53,10 @@ Route::get('/add-task',[TaskController::class, 'addTask'] )->name('tasks.add');
 
 Route::post('/store-task',[TaskController::class, 'storeTask'] )->name('tasks.store');
 Route::put('/update-task', [TaskController::class, 'updateTask'])->name('tasks.update');
+
+
+//rotas do dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 //rota de tratamento de erros, caso entre numa rota não existente
 Route::fallback([UtilController::class, 'fallback']);
