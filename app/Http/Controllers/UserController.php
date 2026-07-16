@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -71,7 +71,7 @@ protected function getUsersFromDb($search){
             ->orwhere('email', 'LIKE', "%{$search}%");
         }
 
-      $usersFromDb= $usersFromDb->select('name', 'id', 'nif', 'address', 'email')
+      $usersFromDb= $usersFromDb->select('name', 'id', 'nif', 'address', 'email', 'photo')
     ->get();
 
    // dd($usersFromDb);
@@ -107,12 +107,22 @@ public function showUser($id){
           $request->validate([
             'name' => 'required|max:50|string'
         ]);
+
+        //inicio a var de photo a null (caso não seja feito upload)
+        $photo = null;
+
+        //se tiver photo, guarda no storage
+        if($request->hasFile('photo')){
+            $photo = Storage::putFile('photos', $request->photo);
+        }
+
         db::table('users')
         ->where('id', $request->id)
         ->update([
             'name' => $request->name,
             'nif' => $request->nif,
-            'address' => $request->address
+            'address' => $request->address,
+            'photo' => $photo
         ]);
         return redirect()->route('users.all')->with('message', 'User actualizado com sucesso!');
 
