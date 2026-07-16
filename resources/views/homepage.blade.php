@@ -4,9 +4,11 @@
 
     <h3>As minhas funcionalidades</h3>
 
-    @if ($myName)
-        <h6>Olá {{ $myName }}</h6>
-    @endif
+    @auth
+        <h6>Olá {{ Auth::user()->name }} e o teu email é {{ Auth::user()->email }} </h6>
+    @endauth
+
+
 
     <p>Nome: {{ $istec_info['name'] }}</p>
     <p>Morada: {{ $istec_info['address'] }}</p>
@@ -24,6 +26,11 @@
         <li><a href="{{ route('homepage') }}">Página Homepage</a></li>
         <li><a href="{{ route('curso.view', 'DS') }}">Página Curso</a></li>
         <li><a href="{{ route('users.add') }}">Adicionar user</a></li>
-        <li><a href="{{ route('users.all') }}">Todos os users</a></li>
+        @auth
+            @if (Auth::user()->email == 'admin@gmail.com')
+                <li><a href="{{ route('users.all') }}">Todos os users</a></li>
+            @endif
+        @endauth
+
     </ul>
 @endsection
